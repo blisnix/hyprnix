@@ -31,8 +31,9 @@
     '';
   };
  };
-    home.file.".config/hypr".source = ./config/hypr;
+    home.file.".config/hypr/hyprland.conf".source = ./config/hypr/hyprland.conf;
+    home.file.".config/hypr/hyprpaper.conf".source = ./config/hypr/hyprpaper.conf;
     home.file.".config/waybar".source = ./config/waybar;
-    home.file.".config/foot".source = ./config/foot;
+    home.file.".config/foot/foot.ini".source = ./config/foot/foot.ini;
     home.file.".bashrc-personal".source = ./config/.bashrc-personal;
 }

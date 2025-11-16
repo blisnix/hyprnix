@@ -6,46 +6,57 @@
       ./hardware-configuration.nix
     ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+  };
 
-  networking.hostName = "hyprland-btw"; 
-  networking.networkmanager.enable = true;
+  networking = { 
+    hostName = "hyprland-btw"; 
+    networkmanager.enable = true;
+  };
 
    time.timeZone = "America/New_York";
 
-   services.getty.autologinUser = "dwilliams";
+   # Add services 
+   services = {
+     getty.autologinUser = "dwilliams";
+     openssh.enable = true;
+     libinput.enable = true;
+     pipewire = {
+       enable = true;
+       pulse.enable = true;
+     };
+   };
 
-   programs.hyprland = { 
+   programs = {
+     hyprland = { 
       enable = true; 
       xwayland.enable = true; 
       withUWSM = true;
+     };
+    firefox.enable = true;
+    thunar.enable = true;
+    mtr.enable = true;
+    gnupg.agent = {
+     enable = true;
+     enableSSHSupport = true;
     };
+   };
 
   # Select internationalisation properties.
    i18n.defaultLocale = "en_US.UTF-8";
 
-   services.pipewire = {
-     enable = true;
-     pulse.enable = true;
-   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.users.dwilliams = {
      isNormalUser = true;
-     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+     extraGroups = [ "wheel" "input" ]; # Enable ‘sudo’ for the user.
      packages = with pkgs; [
        tree
      ];
    };
-
-  programs = {
-    firefox.enable = true;
-    thunar.enable = true;
-    };
 
    environment.systemPackages = with pkgs; [
 
@@ -86,6 +97,7 @@
      git
      gping
      google-chrome
+     hyfetch
      kitty
      lunarvim
      luarocks
@@ -134,20 +146,7 @@
    nixpkgs.config.allowUnfree = true;
    nix.settings.experimental-features = [ "nix-command" "flakes" ];
    security.sudo.wheelNeedsPassword = false;
-
-   programs.mtr.enable = true;
-   programs.gnupg.agent = {
-     enable = true;
-     enableSSHSupport = true;
-   };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-   services.openssh.enable = true;
-
-
-  system.stateVersion = "25.11"; # Did you read the comment?
+   system.stateVersion = "25.11"; # Did you read the comment?
 
 }
 
