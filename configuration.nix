@@ -102,6 +102,7 @@
      lunarvim
      luarocks
      ncdu 
+     nh
      onefetch
      pciutils
      ripgrep
