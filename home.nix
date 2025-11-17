@@ -3,7 +3,7 @@
 {
   imports = [
     ./config/nixvim.nix # your Nixvim HM module
-    inputs.noctalia.homeModules.default # Noctalia’s Home Manager module
+    ./config/noctalia.nix # Noctalia QuickShell wiring (like ddubsos)
   ];
   home = {
     username = "dwilliams";
@@ -41,22 +41,6 @@
           exec Hyprland
         fi
       '';
-    };
-  };
-
-  # Noctalia 
-  programs.noctalia-shell = {
-    enable = true;
-    systemd.enable = true;
-    settings = {
-      # Example: enable app2unit launcher integration
-      appLauncher = {
-        useApp2Unit = true;
-      };
-      colors = {
-        background = "#1e1e2e";
-        foreground = "#cdd6f4";
-      };
     };
   };
 
