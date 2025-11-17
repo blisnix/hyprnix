@@ -356,7 +356,8 @@
       -- Notify background using Stylix palette
       local ok, notify = pcall(require, 'notify')
       if ok then
-        notify.setup({ background_colour = "#${config.lib.stylix.colors.base01}" })
+        -- Use a Catppuccin Mocha background color directly to avoid Stylix dependency
+        notify.setup({ background_colour = "#1e1e2e" })
         vim.notify = notify
       end
 
