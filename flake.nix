@@ -14,7 +14,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixvim, ... }: {
+  outputs = { self, nixpkgs, home-manager, nixvim, noctalia, ... }: {
     nixosConfigurations.hyprland-btw = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -26,6 +26,7 @@
             useUserPackages = true;
             users.dwilliams = import ./home.nix;
             backupFileExtension = "backup";
+            extraSpecialArgs = { inherit inputs; };
           };
         }
       ];

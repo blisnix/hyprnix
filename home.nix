@@ -1,18 +1,22 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
-  home = { 
+  imports = [
+    ./config/nixvim.nix # your Nixvim HM module
+    inputs.noctalia.homeModules.default # Noctalia’s Home Manager module
+  ];
+  home = {
     username = "dwilliams";
     homeDirectory = "/home/dwilliams";
     stateVersion = "25.11";
     sessionVariables = {
       GTK_THEME = "Adwaita:dark";
-     };
+    };
   };
 
   programs = {
     neovim = {
-      enable = true;
+      enable = false; # No managed by nixvim.nix
       defaultEditor = true;
     };
     bash = {
