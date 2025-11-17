@@ -61,7 +61,7 @@
       enable = true;
       enableSSHSupport = true;
     };
-
+    zsh.enable = true; # ensure system zsh is configured for login shells
   };
 
   # Select internationalisation properties.
