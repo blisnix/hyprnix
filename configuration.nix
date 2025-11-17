@@ -88,6 +88,7 @@
     # Hyprland Related 
     quickshell
     clipman
+    cliphist
     grim
     slurp
     nwg-look
@@ -98,7 +99,6 @@
     rofi
     wofi
     waybar
-    waypaper
     matugen
 
 
