@@ -181,8 +181,6 @@ echo -e "${GREEN}Selected console keymap: $consoleKeyMap${NC}"
 # Patch configuration.nix with chosen timezone, hostname, username, and layouts.
 sed -i 's|time.timeZone = ".*";|time.timeZone = "'
 
-print_header "Hardware Configuration"
-
 TARGET_HW="./hardware-configuration.nix"
 
 if [ -f /etc/nixos/hardware-configuration.nix ]; then
