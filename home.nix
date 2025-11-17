@@ -48,31 +48,34 @@
   programs.noctalia-shell = {
     enable = true;
     systemd.enable = true;
-
-    #settings = {
-    # Example: enable app2unit launcher integration
-    #  appLauncher = {
-    #    useApp2Unit = true;
-    #  };
-  };
-
-  gtk = {
-    enable = true;
-    gtk3.extraConfig = {
-      "gtk-application-prefer-dark-theme" = 1;
+    settings = {
+      # Example: enable app2unit launcher integration
+      appLauncher = {
+        useApp2Unit = true;
+      };
+      colors = {
+        background = "#1e1e2e";
+        foreground = "#cdd6f4";
+      };
     };
-    gtk4.extraConfig = {
-      "gtk-application-prefer-dark-theme" = 1;
-    };
-  };
 
-  # Config apps
-  home.file.".config/hypr".source = ./config/hypr;
-  home.file.".config/waybar".source = ./config/waybar;
-  home.file.".config/fastfetch".source = ./config/fastfetch;
-  home.file.".config/kitty".source = ./config/kitty;
-  home.file.".config/foot".source = ./config/foot;
-  home.file.".bashrc-personal".source = ./config/.bashrc-personal;
-  home.file.".config/tmux/tmux.conf".source = ./config/tmux.conf;
-  home.file.".config/starship.toml".source = ./config/starship.toml;
-}
+    gtk = {
+      enable = true;
+      gtk3.extraConfig = {
+        "gtk-application-prefer-dark-theme" = 1;
+      };
+      gtk4.extraConfig = {
+        "gtk-application-prefer-dark-theme" = 1;
+      };
+    };
+
+    # Config apps
+    home.file.".config/hypr".source = ./config/hypr;
+    home.file.".config/waybar".source = ./config/waybar;
+    home.file.".config/fastfetch".source = ./config/fastfetch;
+    home.file.".config/kitty".source = ./config/kitty;
+    home.file.".config/foot".source = ./config/foot;
+    home.file.".bashrc-personal".source = ./config/.bashrc-personal;
+    home.file.".config/tmux/tmux.conf".source = ./config/tmux.conf;
+    home.file.".config/starship.toml".source = ./config/starship.toml;
+  }
