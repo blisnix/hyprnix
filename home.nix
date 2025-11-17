@@ -20,13 +20,14 @@
     # The block below is for commands that should run every time a terminal starts.
     initExtra = ''
       # Source the personal file for all interactive shell sessions
-#      if [ -f ~/.bashrc-personal ]; then
- #       source ~/.bashrc-personal
-  #    fi
+      if [ -f ~/.bashrc-personal ]; then
+       source ~/.bashrc-personal
+      fi
     '';
     profileExtra = ''
       if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-        exec uwsm start -S hyprland-uwsm.desktop
+        #exec uwsm start -S hyprland-uwsm.desktop
+        exec Hyprland
       fi
     '';
   };

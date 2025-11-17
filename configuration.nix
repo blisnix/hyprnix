@@ -33,7 +33,7 @@
      hyprland = { 
       enable = true; 
       xwayland.enable = true; 
-      withUWSM = true;
+      withUWSM = false;
      };
     firefox.enable = true;
     thunar.enable = true;
