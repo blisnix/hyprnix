@@ -35,7 +35,10 @@
     openssh.enable = true;
     tumbler.enable = true;
     envfs.enable = true;
+    seatd.enable = true;
+    gnome.gnome-keyring.enable = true;
     libinput.enable = true;
+    flatpak.enable = true;
     pipewire = {
       enable = true;
       pulse.enable = true;
@@ -161,6 +164,18 @@
       symbola
       terminus_font
     ];
+  };
+
+  systemd.services.flatpak-add-flathub = {
+    description = "Add Flathub Flatpak remote";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network-online.target" "flatpak-system-helper.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+    };
+    script = ''
+      ${pkgs.flatpak}/bin/flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    '';
   };
 
 
