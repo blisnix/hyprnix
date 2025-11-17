@@ -2,11 +2,7 @@
 
 ## Super Simple NixOS config for Hyprland with USWM
 
-## This configuration was taken directly from `tony,btw` YouTube video
-
-https://www.youtube.com/watch?v=7QLhCgDMqgw&t=138s
-
-### Hyprland:
+## This configuration was taken directly from [`tony,btw` YouTube video](https://www.youtube.com/watch?v=7QLhCgDMqgw&t=138s)### Hyprland:
 
 - Autoloin
 - Simple flake
@@ -15,6 +11,18 @@ https://www.youtube.com/watch?v=7QLhCgDMqgw&t=138s
 - Simple waybar as alternative
 - NeoVIM configured by nixvim
 - Tony,BTWs TMUX configuration
+
+**Noctalia Shell**
+
+![Noctalia Shell](config/images/ScreenShot-Noctalia.png)
+
+![Noctalia Shell htop](config/images/ScreenShot-htop-noctalia.png)
+
+**Waybar**
+
+![Waybar](config/images/ScreenShot-waybar.png)
+
+![Waybar htop](config/images/ScreenShot-htop-waybar.png)
 
 ### `Flake.nix`
 
