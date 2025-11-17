@@ -182,10 +182,10 @@ echo -e "${GREEN}Selected console keymap: $consoleKeyMap${NC}"
 sed -i "s|time.timeZone = \".*\";|time.timeZone = \"$timeZone\";|" ./configuration.nix
 sed -i "s|networking.hostName = \".*\";|networking.hostName = \"$hostName\";|" ./configuration.nix
 # Update the primary user attribute from users.users.dwilliams to the chosen username.
-sed -i "s/users.users\.dwilliams = {/users.users.\"$userName\" = {" ./configuration.nix
+sed -i "s|users.users\\.dwilliams = {|users.users.\\"$userName\\" = {|" ./configuration.nix
 # Update console keymap and XKB layout.
-sed -i "s|console.keyMap = \".*\";|console.keyMap = \"$consoleKeyMap\";|" ./configuration.nix
-sed -i "s|xserver.xkb.layout = \".*\";|xserver.xkb.layout = \"$keyboardLayout\";|" ./configuration.nix
+sed -i "s|console.keyMap = \\\".*\\";|console.keyMap = \\\"$consoleKeyMap\\";|" ./configuration.nix
+sed -i "s|xserver.xkb.layout = \\\".*\\";|xserver.xkb.layout = \\\"$keyboardLayout\\";|" ./configuration.nix
 
 # Update flake.nix and home.nix to avoid hardcoded username.
 sed -i "s|users.dwilliams = import ./home.nix;|users.$userName = import ./home.nix;|" ./flake.nix
