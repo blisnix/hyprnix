@@ -1,13 +1,15 @@
 ## Project:
 
-## Super Simple NixOS config for Hyprland with USWM
+## Super Simple NixOS config for Hyprland
 
-## This configuration was taken directly from [`tony,btw` YouTube video](https://www.youtube.com/watch?v=7QLhCgDMqgw&t=138s)### Hyprland:
+## This configuration was taken directly from [`tony,btw` YouTube video](https://www.youtube.com/watch?v=7QLhCgDMqgw&t=138s)
+
+### Hyprland:
 
 - Autoloin
 - Simple flake
 - Simple Home Manager
-- noctalis shell
+- Noctalia shell
 - Simple waybar as alternative
 - NeoVIM configured by nixvim
 - Tony,BTWs TMUX configuration
@@ -62,79 +64,6 @@
     };
   };
 }
-```
-
-## `home.nix`
-
-```nix
-
-{ config, pkgs, inputs, ... }:
-
-{
-  imports = [
-    ./config/nixvim.nix # your Nixvim HM module
-    inputs.noctalia.homeModules.default # Noctalia’s Home Manager module
-  ];
-  home = {
-    username = "dwilliams";
-    homeDirectory = "/home/dwilliams";
-    stateVersion = "25.11";
-    sessionVariables = {
-      # Making sure dark theme is set
-      GTK_THEME = "Adwaita:dark";
-    };
-  };
-
-  programs = {
-    neovim = {
-      enable = false; # Now managed by nixvim.nix
-      defaultEditor = true;
-    };
-    bash = {
-      enable = true;
-      shellAliases = {
-        ll = "eza -la --group-dirs-first --icons";
-        v = "nvim";
-        rebuild = "sudo nixos-rebuild switch --flake ~/tony-nixos/";
-        update = "nix flake update --flake ~/tony-nixos && sudo nixos-rebuild switch --flake ~/tony-nixos/";
-      };
-      # The block below is for commands that should run every time a terminal starts.
-      initExtra = ''
-        # Source the personal file for all interactive shell sessions
-        if [ -f ~/.bashrc-personal ]; then
-         source ~/.bashrc-personal
-        fi
-      '';
-      profileExtra = ''
-        if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-          #exec uwsm start -S hyprland-uwsm.desktop
-          export GTK_THEME=Adwaita:dark
-          exec Hyprland
-        fi
-      '';
-    };
-  };
-
-  gtk = {
-    enable = true;
-    gtk3.extraConfig = {
-      "gtk-application-prefer-dark-theme" = 1;
-    };
-    gtk4.extraConfig = {
-      "gtk-application-prefer-dark-theme" = 1;
-    };
-  };
-
-  # Config apps
-  home.file.".config/hypr".source = ./config/hypr;
-  home.file.".config/waybar".source = ./config/waybar;
-  home.file.".config/fastfetch".source = ./config/fastfetch;
-  home.file.".config/kitty".source = ./config/kitty;
-  home.file.".config/foot".source = ./config/foot;
-  home.file.".bashrc-personal".source = ./config/.bashrc-personal;
-  home.file.".config/tmux/tmux.conf".source = ./config/tmux.conf;
-  home.file.".config/starship.toml".source = ./config/starship.toml;
-}
 
 ```
 
@@ -153,6 +82,12 @@
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
+  };
+
+  zramSwap = {
+    enable = true;
+    memoryPercent = 40; # use ~50% of RAM for compressed swap (tweak as you like)
+    priority = 100; # higher than any disk-based swap
   };
 
   networking = {
@@ -232,9 +167,11 @@
     waypaper
     matugen
 
+
     atop
     bat
     btop
+    bottom
     clang
     curl
     eza
@@ -245,6 +182,7 @@
     git
     gping
     google-chrome
+    htop
     hyfetch
     kitty
     lunarvim
@@ -296,6 +234,9 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   security.sudo.wheelNeedsPassword = true;
   system.stateVersion = "25.11"; # Did you read the comment?
+
+}
+
 
 }
 
