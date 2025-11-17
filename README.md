@@ -7,7 +7,8 @@
 > Note: It's for experimentation in a VM.
 >
 > - QEMU/KVM with VirtIO and 3D acceleration enabled
-> - There is not install script yet
+> - There is no install script yet
+> - In can be installed from live NIXOS ISO. See Tony's video
 > - No support for NVIDIA, AMD GPUs yet.
 
 ### Hyprland:
