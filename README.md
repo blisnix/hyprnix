@@ -94,6 +94,8 @@ Below you can expand each Nix file to view its full contents.
   imports =
     [
       ./hardware-configuration.nix
+      ./config/packages.nix
+      ./config/fonts.nix
     ];
 
   boot = {
@@ -114,7 +116,7 @@ Below you can expand each Nix file to view its full contents.
 
   time.timeZone = "America/New_York";
 
-  # Add services 
+  # Add services
   services = {
     # Disable TTY autologin; use a display manager (ly) instead.
     getty.autologinUser = null;
@@ -152,8 +154,6 @@ Below you can expand each Nix file to view its full contents.
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.dwilliams = {
     isNormalUser = true;
@@ -162,95 +162,6 @@ Below you can expand each Nix file to view its full contents.
       tree
     ];
   };
-
-  environment.systemPackages = with pkgs; [
-
-    ## Hyprland specific 
-    hyprpaper
-    hyprshot
-    hypridle
-    hyprlock
-    hyprpicker
-    libnotify # send alerts
-    xdg-desktop-portal-hyprland
-
-
-    # Hyprland Related 
-    app2unit # launcher 
-    clipman
-    cliphist
-    grim
-    quickshell
-    slurp
-    nwg-look
-    rofi
-    wofi
-    waybar
-    matugen
-
-
-    atop
-    bat
-    btop
-    bottom
-    clang
-    curl
-    eza
-    fastfetch
-    foot
-    git
-    gcc
-    git
-    gping
-    google-chrome
-    htop
-    hyfetch
-    kitty
-    lunarvim
-    luarocks
-    ncdu
-    nh
-    onefetch
-    pciutils
-    ranger
-    ripgrep
-    starship
-    tmux
-    ugrep
-    vim
-    wget
-    yazi
-    zig
-    zoxide
-  ];
-  fonts = {
-    packages = with pkgs; [
-      dejavu_fonts
-      fira-code
-      fira-code-symbols
-      font-awesome
-      hackgen-nf-font
-      ibm-plex
-      inter
-      jetbrains-mono
-      material-icons
-      maple-mono.NF
-      minecraftia
-      nerd-fonts.im-writing
-      nerd-fonts.blex-mono
-      noto-fonts
-      noto-fonts-color-emoji
-      noto-fonts-cjk-sans
-      noto-fonts-cjk-serif
-      noto-fonts-monochrome-emoji
-      powerline-fonts
-      roboto
-      roboto-mono
-      symbola
-      terminus_font
-    ];
-  };
-
 
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -336,39 +247,161 @@ Below you can expand each Nix file to view its full contents.
 
 </details>
 
+<details>
+<summary><span style="font-size:1.1em"><code>config/packages.nix</code> – Install Apps</span></summary>
+```nix
+
+{ pkgs, ... }:
+
+{
+
+# Add packages below.
+
+environment.systemPackages = with pkgs; [
+
+    ## Hyprland specific
+    hyprpaper
+    hyprshot
+    hypridle
+    hyprlock
+    hyprpicker
+    libnotify # send alerts
+    xdg-desktop-portal-hyprland
+
+    # Hyprland Related
+    app2unit # launcher
+    clipman
+    cliphist
+    grim
+    quickshell
+    slurp
+    nwg-look
+    rofi
+    wofi
+    waybar
+    matugen
+
+    # Add your packages here
+    atop
+    bat
+    btop
+    bottom
+    cargo
+    clang
+    curl
+    direnv # needed for zsh plugin and vscode
+    fastfetch
+    foot
+    git
+    gcc
+    git
+    gping
+    google-chrome
+    htop
+    hyfetch
+    kitty
+    lunarvim # Alternate neovim (lvim)
+    luarocks # LUA for nevoim
+    ncdu
+    nh # Nix Helper
+    nixd # nix lsp
+    onefetch
+    pciutils
+    ranger
+    ripgrep
+    rustup
+    starship
+    tmux #Terminal mux with hybridd ddubs-tonybtw config
+    ugrep
+    wget
+    yazi
+    zig
+
+];
+
+}
+
+````
+</details>
+
+
+
+<details>
+<summary><span style="font-size:1.1em"><code>config/fonts.nix</code> – Install Fonts</span></summary>
+```nix
+
+{ pkgs, ... }:
+
+{
+
+  fonts = {
+    packages = with pkgs; [
+      dejavu_fonts
+      fira-code
+      fira-code-symbols
+      font-awesome
+      hackgen-nf-font
+      ibm-plex
+      inter
+      jetbrains-mono
+      material-icons
+      maple-mono.NF
+      minecraftia
+      nerd-fonts.im-writing
+      nerd-fonts.blex-mono
+      noto-fonts
+      noto-fonts-color-emoji
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      noto-fonts-monochrome-emoji
+      powerline-fonts
+      roboto
+      roboto-mono
+      symbola
+      terminus_font
+    ];
+  };
+
+}
+
+
+````
+
+</details>
+
 ## Hyprland keybinds
 
 Default keybinds from <code>config/hypr/hyprland.conf</code> (with <code>$mainMod = SUPER</code>):
 
-| Keys / Modifiers                | Action                  | Description                                                                                  |
-|---------------------------------|-------------------------|----------------------------------------------------------------------------------------------|
-| SUPER + Return                  | exec <code>$terminal</code> (foot) | Open terminal (foot)                                                                        |
-| SUPER + SHIFT + Return         | exec kitty              | Open Kitty terminal                                                                          |
-| SUPER + Q                       | killactive              | Close focused window                                                                         |
-| SUPER + SHIFT + Q              | exit                    | Exit Hyprland session                                                                        |
-| SUPER + T                       | exec <code>$fileManager</code> (thunar) | Launch Thunar file manager                                                 |
-| SUPER + Space                   | togglefloating          | Toggle floating for focused window                                                           |
-| SUPER + F                       | fullscreen,1            | Toggle global fullscreen mode                                                                |
-| SUPER + SHIFT + F              | fullscreen              | Toggle regular fullscreen                                                                    |
-| SUPER + R                       | exec <code>$menu</code> (wofi --show drun) | Application launcher                                                          |
-| SUPER + S                       | exec <code>$snip</code> (snip) | Snipping / screenshot tool                                                         |
-| ALT + SHIFT + S                | exec hyprshot…          | Region screenshot to <code>~/Pictures/Screenshots</code>                                    |
-| SUPER + D                       | exec qs … launcher      | Toggle Noctalia launcher                                                                     |
-| SUPER + M                       | exec qs … notifications | Toggle Noctalia notifications                                                                |
-| SUPER + V                       | exec qs … clipboard     | Open Noctalia clipboard launcher                                                             |
-| SUPER + SHIFT + ,              | exec qs … settings      | Toggle Noctalia settings                                                                     |
-| SUPER + ALT + L                | exec qs … lockAndSuspend | Lock and suspend                                                                            |
-| SUPER + SHIFT + Y              | exec qs … wallpaper     | Toggle wallpaper module                                                                      |
-| SUPER + X                       | exec qs … sessionMenu   | Toggle session menu                                                                          |
-| SUPER + C                       | exec qs … controlCenter | Toggle control center                                                                       |
-| SUPER + CTRL + R               | exec qs … screenRecorder | Toggle screen recorder                                                                      |
-| SUPER + L                       | movefocus l             | Move focus left                                                                              |
-| SUPER + H                       | movefocus r             | Move focus right                                                                             |
-| SUPER + K                       | movefocus u             | Move focus up                                                                                |
-| SUPER + J                       | movefocus d             | Move focus down                                                                              |
-| SUPER + 1–0                     | workspace 1–10          | Switch to workspace 1–10                                                                     |
-| SUPER + SHIFT + 1–0            | movetoworkspace 1–10    | Move focused window to workspace 1–10                                                       |
-| SUPER + mouse scroll down      | workspace e+1           | Go to next workspace                                                                         |
-| SUPER + mouse scroll up        | workspace e-1           | Go to previous workspace                                                                     |
-| SUPER + mouse:272 (drag left)  | movewindow              | Drag to move window                                                                          |
-| SUPER + mouse:273 (drag right) | resizewindow            | Drag to resize window                                                                        |
+| Keys / Modifiers               | Action                                     | Description                                              |
+| ------------------------------ | ------------------------------------------ | -------------------------------------------------------- |
+| SUPER + Return                 | exec <code>$terminal</code> (foot)         | Open terminal (foot)                                     |
+| SUPER + SHIFT + Return         | exec kitty                                 | Open Kitty terminal                                      |
+| SUPER + Q                      | killactive                                 | Close focused window                                     |
+| SUPER + SHIFT + Q              | exit                                       | Exit Hyprland session                                    |
+| SUPER + T                      | exec <code>$fileManager</code> (thunar)    | Launch Thunar file manager                               |
+| SUPER + Space                  | togglefloating                             | Toggle floating for focused window                       |
+| SUPER + F                      | fullscreen,1                               | Toggle global fullscreen mode                            |
+| SUPER + SHIFT + F              | fullscreen                                 | Toggle regular fullscreen                                |
+| SUPER + R                      | exec <code>$menu</code> (wofi --show drun) | Application launcher                                     |
+| SUPER + S                      | exec <code>$snip</code> (snip)             | Snipping / screenshot tool                               |
+| ALT + SHIFT + S                | exec hyprshot…                             | Region screenshot to <code>~/Pictures/Screenshots</code> |
+| SUPER + D                      | exec qs … launcher                         | Toggle Noctalia launcher                                 |
+| SUPER + M                      | exec qs … notifications                    | Toggle Noctalia notifications                            |
+| SUPER + V                      | exec qs … clipboard                        | Open Noctalia clipboard launcher                         |
+| SUPER + SHIFT + ,              | exec qs … settings                         | Toggle Noctalia settings                                 |
+| SUPER + ALT + L                | exec qs … lockAndSuspend                   | Lock and suspend                                         |
+| SUPER + SHIFT + Y              | exec qs … wallpaper                        | Toggle wallpaper module                                  |
+| SUPER + X                      | exec qs … sessionMenu                      | Toggle session menu                                      |
+| SUPER + C                      | exec qs … controlCenter                    | Toggle control center                                    |
+| SUPER + CTRL + R               | exec qs … screenRecorder                   | Toggle screen recorder                                   |
+| SUPER + L                      | movefocus l                                | Move focus left                                          |
+| SUPER + H                      | movefocus r                                | Move focus right                                         |
+| SUPER + K                      | movefocus u                                | Move focus up                                            |
+| SUPER + J                      | movefocus d                                | Move focus down                                          |
+| SUPER + 1–0                    | workspace 1–10                             | Switch to workspace 1–10                                 |
+| SUPER + SHIFT + 1–0            | movetoworkspace 1–10                       | Move focused window to workspace 1–10                    |
+| SUPER + mouse scroll down      | workspace e+1                              | Go to next workspace                                     |
+| SUPER + mouse scroll up        | workspace e-1                              | Go to previous workspace                                 |
+| SUPER + mouse:272 (drag left)  | movewindow                                 | Drag to move window                                      |
+| SUPER + mouse:273 (drag right) | resizewindow                               | Drag to resize window                                    |
