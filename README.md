@@ -326,7 +326,8 @@ environment.systemPackages = with pkgs; [
 
 
 
-### `config/fonts.nix` – Install Fonts
+<details>
+<summary><code>config/fonts.nix</code> – Install Fonts</summary>
 
 ```nix
 { pkgs, ... }:
@@ -361,6 +362,8 @@ environment.systemPackages = with pkgs; [
   };
 }
 ```
+
+</details>
 
 ## Hyprland keybinds
 
