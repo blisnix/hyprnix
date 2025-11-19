@@ -36,6 +36,33 @@ print_success_banner() {
   echo -e "${GREEN}╚═══════════════════════════════════════════════════════════════════════╝${NC}"
 }
 
+prompt_yes_no() {
+  # Usage: prompt_yes_no "Question?" [default]
+  # default: Y or N (case-insensitive). If omitted, default is Y.
+  local question="$1"
+  local def="${2:-Y}"
+  local ans ch=""
+  local suffix="[Y/n]"
+  if [[ "$def" =~ ^[Nn]$ ]]; then suffix="[y/N]"; fi
+  while true; do
+    if [ -w /dev/tty ]; then
+      printf "%s %s " "$question" "$suffix" > /dev/tty
+      IFS= read -r -n 1 ch < /dev/tty || true
+      echo > /dev/tty
+    else
+      printf "%s %s " "$question" "$suffix"
+      IFS= read -r -n 1 ch || true
+      echo
+    fi
+    case "$ch" in
+      [Yy]) return 0 ;;
+      [Nn]) return 1 ;;
+      "") if [[ "$def" =~ ^[Yy]$ ]]; then return 0; else return 1; fi ;;
+      *) ;; # reprompt
+    esac
+  done
+}
+
 print_failure_banner() {
   echo -e "${RED}╔═══════════════════════════════════════════════════════════════════════╗${NC}"
   echo -e "${RED}║         hyprland-btw installation failed during nixos-rebuild.        ║${NC}"
@@ -252,9 +279,9 @@ else
   if [ $NONINTERACTIVE -eq 1 ]; then
     echo -e "Non-interactive: proceeding with automatic creation."
   else
-    read -p "Proceed with creating '$userName' on switch? (Y/N): " -n 1 -r
-    echo
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    if prompt_yes_no "Proceed with creating '$userName' on switch?" Y; then
+      :
+    else
       print_error "Aborting at user confirmation."
       exit 1
     fi
