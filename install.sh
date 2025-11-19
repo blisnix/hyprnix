@@ -295,8 +295,9 @@ echo -e "${GREEN}Selected console keymap: $consoleKeyMap${NC}"
 echo -e "${GREEN}Selected GPU profile: $GPU_PROFILE${NC}"
 
 # Patch configuration.nix with chosen timezone, hostname, username, layouts, and VM profile.
-sed -i "s|time.timeZone = \".*\";|time.timeZone = \"$timeZone\";|" ./configuration.nix
-sed -i "s|networking.hostName = \".*\";|networking.hostName = \"$hostName\";|" ./configuration.nix
+sed -i -E 's|(^\s*time\.timeZone\s*=\s*\").*(\";)|\1'"$timeZone"'\2|' ./configuration.nix
+# configuration.nix defines hostName inside the networking attrset (not networking.hostName = ...)
+sed -i -E 's|(^\s*hostName\s*=\s*\").*(\";)|\1'"$hostName"'\2|' ./configuration.nix
 # Update the primary user attribute in configuration.nix to the chosen username (match any current value).
 sed -i -E 's|users\.users\."[^"]+"\s*=\s*\{|users.users."'"$userName"'" = {|' ./configuration.nix
 # Update console keymap and XKB layout.
