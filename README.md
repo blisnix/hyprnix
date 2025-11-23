@@ -48,7 +48,13 @@ with a few additions:
 
 ![Waybar](config/images/ScreenShot-waybar.png)
 
-![Waybar htop](config/images/ScreenShot-htop-waybar.png)
+![htop](config/images/ScreenShot-htop-waybar.png)
+
+![Kitty Background](config/images/kitty-bg.png)
+
+![Rofi Menu](config/images/rofi-menu.png)
+
+![Config menu](config/images/config-menu.png)
 
 ## Installation:
 
@@ -467,7 +473,6 @@ Default keybinds from <code>config/hypr/hyprland.conf</code> (with <code>$mainMo
 | SUPER + mouse:273 (drag right) | resizewindow                               | Drag to resize window                                    |
 
 ## Repository layout:
-
 
 ```text path=null start=null
 ├── CHANGELOG.md
