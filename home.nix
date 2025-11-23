@@ -221,7 +221,6 @@
   home.file.".config/hypr".source = ./config/hypr;
   home.file.".config/waybar".source = ./config/waybar;
   home.file.".config/fastfetch".source = ./config/fastfetch;
-  home.file.".config/kitty".source = ./config/kitty;
   home.file.".config/foot".source = ./config/foot;
   home.file.".bashrc-personal".source = ./config/.bashrc-personal;
   home.file.".zshrc-personal".source = ./config/.zshrc-personal;
