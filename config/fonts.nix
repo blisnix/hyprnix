@@ -25,7 +25,7 @@
       powerline-fonts
       roboto
       roboto-mono
-      #symbola  Won't d/l again 
+      symbola
       terminus_font
     ];
   };
