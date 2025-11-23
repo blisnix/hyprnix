@@ -1,21 +1,38 @@
-# CHANGELOG for Hyprland-btw project 
+# CHANGELOG for Hyprland-btw project
 
-## Started:  11/17/25 
-##  Author:  Don Williams (ddubs)
-##  Inspired by:  Tony,btw YouTube Video. (See README.md) 
+## Started: 11/17/25
 
+## Author: Don Williams (ddubs)
+
+## Inspired by: Tony,btw YouTube Video. (See README.md)
+
+#### Hyprland-btw v0.2.2
+
+- Added:
+  - Kitty
+  - Kitty-bg (random background in terminal)
+  - Wezterm
+  - Alacritty
+- Set vscode to Nero Hyprland theme
+- Set GTK to Dracula theme
+- Set icons to candy-icons
+- Re-enabled `symbola` font
+- Added legacy rofi menu
+- Added rofi menu to edit system files
 
 #### Hyprland-btw v0.2.1
-- Added animations directory  
-- Broke up Hyprland into sourced files 
-  - `appearnace.conf`    
-  - `binds.conf`    
-  - `env.conf`    
-  - `input.conf`    
-  - `startup.conf`    
-  - `WindowRules.conf`    
+
+- Added animations directory
+- Broke up Hyprland into sourced files
+  - `appearnace.conf`
+  - `binds.conf`
+  - `env.conf`
+  - `input.conf`
+  - `startup.conf`
+  - `WindowRules.conf`
 
 #### Hyprland-btw v0.2.0
+
 - Fixed noctalia not starting on first login after install
 - Switched Noctalia to Home Manger config
 - Added noctalia systemd service
@@ -24,16 +41,19 @@
   - This occurs periodicaly until a new source can be found
 
 #### Hyprland-btw v0.1.3
- - Fixed preserving existing users
- - Fixed new users get home creation
+
+- Fixed preserving existing users
+- Fixed new users get home creation
 
 #### Hyprland-btw v0.1.2
- - Fixed username hardcoded to dwilliams
- - Fixed hostname not getting updated
- - Added check for valid username and prompt to add to enter again
- - Addded root password check, prompt to optionally set if not
+
+- Fixed username hardcoded to dwilliams
+- Fixed hostname not getting updated
+- Added check for valid username and prompt to add to enter again
+- Addded root password check, prompt to optionally set if not
 
 #### Hyprland-btw v0.1.1
+
 - Merged dev branch to main
 - Renamed the last of the tony-nixos to Hyprland-btw
 - Fixed install.sh username conflicts causing install failure
@@ -47,6 +67,7 @@
 ## Renamed to `Hyprland-btw`
 
 #### Hyprland-btw-v0.1.0
+
 - Merged dev branch to main
 - Renamed project hyprland-btw
 - Updated all references
@@ -67,14 +88,16 @@
   - Does sudo nixos-rebuild boot --flake
   - Safer than switch
 
->Note: I.e if you have a LDM it will restart that switching to ly
->Resulting in black screen and you have to re-run the rebuild
+> Note: I.e if you have a LDM it will restart that switching to ly
+> Resulting in black screen and you have to re-run the rebuild
 
 - Refreshed `README.md`` with scripted/manual install instructions and drivers documentation.
 - Documented a VM-centric GPU profile and how to toggle drivers and VM guest services in configuration.nix.
 
 ### Tony-NixOS-v0.0.5
+
 #### Release v0.0.5
+
 - Added modules
 - packages.nix
 - fonts.nix
@@ -83,17 +106,19 @@
 - Summaries for major packages
 - Annotated Directory Layout
 
-
 ### Tony-NixOS-v0.0.4
+
 #### Release v0.0.4
+
 - Added flatpak service and added flathub by default
 - Added seatd service
 - Added gnome keyring
 - Added configured vscode
 
-
 ### Tony-NixOS-v0.0.3
+
 #### Release v0.0.3
+
 - Made zsh default shell
   - Added Plugins
   - syntax highlighting
@@ -116,13 +141,13 @@
   - fish
 - Updated configuration.nix and hardware-configuration.nix NIX formattiung
 
-
 ### Tony-NixOS-v0.0.1
+
 #### Initial Release v0.0.1
+
 - Simple Hyprland Config
 - Flake.nix, configuration.nix, hardware.nix
 - Noctalia Shell by default
 - Simple Waybar alternative
 - Ly login manager
 - Low memory overhead around 600MB
-
