@@ -6,10 +6,22 @@
 
 ## Inspired by: Tony,btw YouTube Video. (See README.md)
 
-#### Hyprland-btw v0.2.4
+#### Hyprland-btw v0.2.6
+
+- Added `keybinds` rofi search menu
+
+#### Hyprland-btw v0.2.5
 
 - Created desktop file for `kitty-bg`
 - Made `kitty-bg` alternmate terminal `SUPERSHIFT+ENTER`
+
+#### Hyprland-btw v0.2.4
+
+- Code cleanup
+  - Removed old unused code
+  - Moved scripts in home.nix to own dir (config/scripts)
+- Added TokyoNight theme (commented out currently)
+- Change vscode.nix theme to Nero Hyrland
 
 #### Hyprland-btw v0.2.3
 
