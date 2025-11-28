@@ -13,6 +13,8 @@
     loader.efi.canTouchEfiVariables = true;
   };
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   zramSwap = {
     enable = true;
     memoryPercent = 40; # use ~50% of RAM for compressed swap (tweak as you like)
