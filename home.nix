@@ -10,6 +10,7 @@ in
     ./config/editors/nixvim.nix # Nixvim NeoVIM config 
     #./config/editors/nvf.nix # nvf alternate NVIM config 
     ./config/noctalia.nix # Noctalia QuickShell wiring (fronm ddubsos)
+    ./config/overview.nix # Quickshell-overview workspace preview
     ./config/editors/vscode.nix # w/plugins and nero hyprland theme
     ./config/terminals/kitty.nix #kitty term and kitty-bg (background in kitty)
     ./config/terminals/ghostty.nix

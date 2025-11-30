@@ -583,8 +583,9 @@ Default keybinds from <code>config/hypr/hyprland.conf</code> (with <code>$mainMo
 | SUPER + SHIFT + F              | fullscreen                                 | Toggle regular fullscreen                                |
 | SUPER + R                      | exec <code>$menu</code> (wofi --show drun) | Application launcher                                     |
 | SUPER + S                      | exec <code>$snip</code> (snip)             | Snipping / screenshot tool                               |
-| ALT + SHIFT + S                | exec hyprshot…                             | Region screenshot to <code>~/Pictures/Screenshots</code> |
-| SUPER + D                      | exec qs … launcher                         | Toggle Noctalia launcher                                 |
+|| ALT + SHIFT + S                | exec hyprshot…                             | Region screenshot to <code>~/Pictures/Screenshots</code> |
+|| SUPER + Tab                    | exec qs … overview toggle                  | Toggle Quickshell workspace overview with live previews  |
+|| SUPER + D                      | exec qs … launcher                         | Toggle Noctalia launcher                                 |
 | SUPER + M                      | exec qs … notifications                    | Toggle Noctalia notifications                            |
 | SUPER + V                      | exec qs … clipboard                        | Open Noctalia clipboard launcher                         |
 | SUPER + SHIFT + ,              | exec qs … settings                         | Toggle Noctalia settings                                 |
