@@ -6,6 +6,15 @@
 
 ## Inspired by: Tony,btw YouTube Video. (See README.md)
 
+#### Hyprland-btw v0.2.8
+
+- NEW: Added `quickshell-overview` integration
+  - Workspace overview with live window previews
+  - Toggled via `SUPER + Tab` keybind
+  - Drag-and-drop workspace navigation
+  - Uses IPC for seamless Hyprland integration
+  - QML code managed via Home Manager activation script
+
 #### Hyprland-btw v0.2.7
 
 - Updated flake
