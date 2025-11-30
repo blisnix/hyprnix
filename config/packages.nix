@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   #  Add packages below.
 
   environment.systemPackages = with pkgs; [
@@ -26,6 +26,7 @@
     wl-clipboard
     kdePackages.qtmultimedia # needed for overview feature
     libsForQt5.qt5.qtmultimedia # needed for overview feature
+    libsForQt5.qt5.qtgraphicaleffects # needed for overview feature
 
     # Add your packages here
     atop
