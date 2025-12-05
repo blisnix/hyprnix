@@ -65,8 +65,18 @@
         enable = true;
       };
 
+
       # Fuzzy finder
-      telescope.enable = true;
+      telescope = {
+        enable = true;
+        settings.extensions = {
+          media_files = {
+            filetypes = [ "png" "webp" "jpg" "jpeg" ];
+            find_cmd = "find";
+          };
+        };
+      };
+
 
       # Treesitter for syntax/TS features
       treesitter.enable = true;
@@ -204,6 +214,12 @@
         options.desc = "Search files by name";
       }
       {
+        key = "<leader>fm";
+        mode = [ "n" ];
+        action = "<cmd>Telescope media_files<cr>";
+        options.desc = "Search media files";
+      }
+      {
         key = "<leader>lg";
         mode = [ "n" ];
         action = "<cmd>Telescope live_grep<cr>";
@@ -293,32 +309,41 @@
 
     # Runtime tools and language servers
     extraPackages = with pkgs; [
-      ripgrep
-      fd
+
+      chafa # Image privew 
+      clang-tools
       bat
-      # Wayland clipboard provider used by Neovim for system clipboard access
-      wl-clipboard
-      lazygit
-      nil
+      fd
+      figlet
       hyprls
+      lazygit
+      lua-language-server
+      marksman
+      nil
       nodePackages.typescript-language-server
       nodePackages.typescript
-      vscode-langservers-extracted
-      pyright
-      lua-language-server
-      zls
-      marksman
-      clang-tools
+      nixpkgs-fmt
       prettierd
+      pyright
+      ripgrep
       stylua
       shfmt
-      nixpkgs-fmt
-      figlet
       toilet
+      wl-clipboard
+      viu # Better image prview need make work
+      vscode-langservers-extracted
+      zls
+    ];
+
+    extraPlugins = with pkgs.vimPlugins; [
+      telescope-media-files-nvim
     ];
 
     # Diagnostic UI and notify background tweaks
     extraConfigLua = ''
+
+      require('telescope').load_extension('media_files')
+
       -- Inline diagnostics (virtual text) similar to NVF virtual_lines
       vim.diagnostic.config({
         virtual_text = { prefix = "●", spacing = 2 },

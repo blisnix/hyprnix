@@ -6,6 +6,22 @@
 
 ## Inspired by: Tony,btw YouTube Video. (See README.md)
 
+#### Hyprland-btw v0.2.9
+
+- Ported `nixvim` updates from ddubsOS
+  - Added image preview via chafa
+  - `leader fm` to search
+  - Currently not supporting `webp` formats
+    - nixpkg wasn't compiled with libwebp
+  - Eventually will switch to `viu`
+    - Better quality
+    - More image format support
+    - Problem is media plugin hardwired for `chafa`
+- Updated flake -`noctalia-shell` updates:
+  - start up from `qs-c noctalia-shell` to `noctalia-shell`
+  - Results in starting most current version installed
+  - Changed keybindings to match
+
 #### Hyprland-btw v0.2.8
 
 - NEW: Added `quickshell-overview` integration
