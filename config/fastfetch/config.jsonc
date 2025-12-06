@@ -3,11 +3,11 @@
                "logo": {
                   "source": "~/.config/fastfetch/nixos.png",
                   "type": "kitty-direct",
-                  "height": 9,
-                  "width": 18,
+                  "height": 7,
+                  "width": 14,
                "padding": {
-                "top": 3,
-                "left": 3
+                "top": 4,
+                "left": 2
          }
      },
       "display": {
@@ -24,8 +24,8 @@
       },
         {
         "type": "command",
-        "key": "│ ├",
-        "text": "echo HyprBTW Version: ${HYPRBTW}",
+        "key": " ├  ",
+        "text": "echo HyprBTW Ver: ${HYPRBTW}",
         "keyColor": "31"
         },
       {
