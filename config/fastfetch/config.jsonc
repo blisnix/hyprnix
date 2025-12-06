@@ -22,6 +22,12 @@
           "key": "OS - ",
           "keyColor": "31",  // = color1
       },
+        {
+        "type": "command",
+        "key": "│ ├",
+        "text": "echo HyprBTW Version: ${HYPRBTW}",
+        "keyColor": "31"
+        },
       {
           "type": "kernel",
           "key": " ├  ",
