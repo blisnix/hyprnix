@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   #  Add packages below.
 
   environment.systemPackages = with pkgs; [
@@ -32,6 +32,7 @@
     qt6.qtmultimedia
 
     # Add your packages here
+    alejandra
     atop
     bat
     btop
