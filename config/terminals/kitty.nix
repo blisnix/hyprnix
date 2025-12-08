@@ -282,6 +282,6 @@
     exec = "kitty-bg";
     icon = "utilities-terminal";
     terminal = false;
-    categories = [ "System" "Utility" "TerminalEmulator" ];
+    categories = ["System" "Utility" "TerminalEmulator"];
   };
 }

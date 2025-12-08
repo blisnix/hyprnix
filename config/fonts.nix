@@ -1,7 +1,4 @@
-{ pkgs, ... }:
-
-{
-
+{pkgs, ...}: {
   fonts = {
     packages = with pkgs; [
       dejavu_fonts
@@ -29,5 +26,4 @@
       terminus_font
     ];
   };
-
 }

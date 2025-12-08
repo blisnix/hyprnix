@@ -1,4 +1,4 @@
-{ config, ... }: {
+{config, ...}: {
   programs.htop = {
     enable = true;
     settings =
@@ -25,17 +25,17 @@
         highlight_threads = 1;
       }
       // (with config.lib.htop;
-      leftMeters [
-        (bar "AllCPUs2")
-        (bar "Memory")
-        (bar "Swap")
-        (text "Zram")
-      ])
+        leftMeters [
+          (bar "AllCPUs2")
+          (bar "Memory")
+          (bar "Swap")
+          (text "Zram")
+        ])
       // (with config.lib.htop;
-      rightMeters [
-        (text "Tasks")
-        (text "LoadAverage")
-        (text "Uptime")
-      ]);
+        rightMeters [
+          (text "Tasks")
+          (text "LoadAverage")
+          (text "Uptime")
+        ]);
   };
 }

@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   programs.git = {
     enable = true;
 
@@ -27,7 +26,7 @@
         editor = "nvim";
         whitespace = "fix,-indent-with-non-tab,trailing-space,cr-at-eol";
       };
-      diff = { colorMoved = "default"; };
+      diff = {colorMoved = "default";};
 
       # Renamed in Home Manager: aliases -> settings.alias
       alias = {

@@ -10,6 +10,8 @@ alias vi=$EDITOR
 alias vim=$EDITOR
 alias c="clear"
 
+alias nix-fmt-all="nix fmt ./"
+
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"

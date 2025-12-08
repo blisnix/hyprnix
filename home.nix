@@ -1,17 +1,20 @@
-{ config, pkgs, inputs, lib, ... }:
-
-let
-  rofiLegacyMenu = import ./config/scripts/rofi-legacy.menu.nix { inherit pkgs; };
-  configMenu = import ./config/scripts/config-menu.nix { inherit pkgs; };
-  keybindsMenu = import ./config/scripts/keybinds.nix { inherit pkgs; };
-in
 {
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}: let
+  rofiLegacyMenu = import ./config/scripts/rofi-legacy.menu.nix {inherit pkgs;};
+  configMenu = import ./config/scripts/config-menu.nix {inherit pkgs;};
+  keybindsMenu = import ./config/scripts/keybinds.nix {inherit pkgs;};
+in {
   imports = [
-    ./config/editors/nixvim.nix # Nixvim NeoVIM config 
+    ./config/editors/nixvim.nix # Nixvim NeoVIM config
     ./config/cli/git.nix #config git settings AND username/EMail
     ./config/cli/htop.nix # htop monitor
     ./config/cli/cava.nix # Audio visualize Dracula theme (others in file)
-    #./config/editors/nvf.nix # nvf alternate NVIM config 
+    #./config/editors/nvf.nix # nvf alternate NVIM config
     ./config/noctalia.nix # Noctalia QuickShell wiring (fronm ddubsos)
     ./config/overview.nix # Quickshell-overview workspace preview
     ./config/editors/vscode.nix # w/plugins and nero hyprland theme
@@ -123,7 +126,7 @@ in
   };
 
   # Seed wallpapers once into ~/Pictures/Wallpapers (Noctalia default), without overwriting user changes
-  home.activation.seedWallpapers = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  home.activation.seedWallpapers = lib.hm.dag.entryAfter ["writeBoundary"] ''
     set -eu
     SRC=${./config/wallpapers}
     DEST="$HOME/Pictures/Wallpapers"

@@ -13,9 +13,29 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    alejandra.url = "github:kamadorueda/alejandra";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nixvim, noctalia, ... }: {
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    home-manager,
+    nixvim,
+    noctalia,
+    alejandra,
+    ...
+  }: let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {
+      inherit system;
+      config = {
+        allowUnfree = true;
+        permittedInsecurePackages = [
+          "electron-25.9.0"
+        ];
+      };
+    };
+  in {
     nixosConfigurations.hyprland-btw = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -28,10 +48,21 @@
             useUserPackages = true;
             users."dwilliams" = import ./home.nix;
             backupFileExtension = "backup";
-            extraSpecialArgs = { inherit inputs; };
+            extraSpecialArgs = {inherit inputs;};
           };
         }
       ];
     };
+    # Standalone home-manager configuration
+    homeConfigurations."ddubs@nixos" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      extraSpecialArgs = {
+        inherit inputs;
+      }; # Pass flake inputs to our config
+      modules = [./home.nix];
+    };
+
+    # Code formatter
+    formatter.x86_64-linux = alejandra.defaultPackage.x86_64-linux;
   };
 }
