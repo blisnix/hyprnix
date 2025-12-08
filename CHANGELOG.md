@@ -9,10 +9,13 @@
 #### Hyprland-btw v0.3.0
 
 - `nixvim` now uses `alejandra` for NIX formatting
-- Updated Flake
 - Updated Noctalia to current build
+- Updated Flake
 
 #### Hyprland-btw v0.2.9
+
+- `nixvim` now uses `alejandra` for NIX formatting
+- Updated Noctalia to current build
 
 - Ported `nixvim` updates from ddubsOS
   - Added image preview via chafa
