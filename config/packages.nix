@@ -10,6 +10,7 @@
     hyprpicker
     libnotify # send alerts
     xdg-desktop-portal-hyprland
+    nwg-displays
 
     # Hyprland Related
     app2unit # launcher
@@ -35,6 +36,7 @@
     alejandra
     atop
     bat
+    brave
     btop
     bottom
     cargo

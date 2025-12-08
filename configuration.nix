@@ -18,22 +18,22 @@
   };
 
   networking = {
-    hostName = "hyprland-btw";
+    hostName = "hyprnix";
     networkmanager.enable = true;
   };
 
-  time.timeZone = "America/New_York";
+  time.timeZone = "America/Los_Angeles";
 
   # GPU/VM profile for this single-host system
   # Current host: VM with virtio GPU (no dedicated AMD/Intel/NVIDIA module enabled).
   # The installer will set exactly ONE of these to true based on your GPU profile:
-  drivers.amdgpu.enable = false; # AMD GPUs
+  drivers.amdgpu.enable = true; # AMD GPUs
   drivers.intel.enable = false; # Intel iGPU
   drivers.nvidia.enable = false; # NVIDIA GPUs
 
   # Enable VM guest services via the drivers module when running in a VM.
   # Disable this if you are installing on bare metal without QEMU/Spice.
-  vm.guest-services.enable = true;
+  vm.guest-services.enable = false;
 
   # Add services
   services = {
@@ -66,7 +66,7 @@
       xwayland.enable = true;
       withUWSM = false;
     };
-    firefox.enable = false;
+    firefox.enable = true;
     thunar.enable = true;
     mtr.enable = true;
     gnupg.agent = {
@@ -74,6 +74,9 @@
       enableSSHSupport = true;
     };
     zsh.enable = true; # ensure system zsh is configured for login shells
+    zsh.shellAliases = {
+      rebuild = "sudo nixos-rebuild switch --flake /home/blis/hyprnix";
+    };
   };
 
   # Select internationalisation properties.
@@ -83,13 +86,13 @@
   console.keyMap = "us";
 
   # Define the primary user account. Don't forget to set a password with ‘passwd’.
-  users.users."dwilliams" = {
+
+  users.users."blis" = {
     isNormalUser = true;
-    extraGroups = ["wheel" "input"]; # Enable ‘sudo’ for the user.
-    shell = pkgs.zsh; # default login shell
-    packages = with pkgs; [
-      tree
-    ];
+    extraGroups = ["wheel" "input"];
+    home = "/home/blis";
+    createHome = true;
+    shell = pkgs.zsh;
   };
 
   # Example: add additional users (uncomment and adjust as needed)
@@ -124,6 +127,7 @@
 
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
+  users.mutableUsers = true;
   security.sudo.wheelNeedsPassword = false;
   system.stateVersion = "25.11"; # Did you read the comment?
 }

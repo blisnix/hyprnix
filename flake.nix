@@ -36,7 +36,7 @@
       };
     };
   in {
-    nixosConfigurations.hyprland-btw = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.hyprnix = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./configuration.nix
@@ -46,7 +46,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users."dwilliams" = import ./home.nix;
+            users."blis" = import ./home.nix;
             backupFileExtension = "backup";
             extraSpecialArgs = {inherit inputs;};
           };

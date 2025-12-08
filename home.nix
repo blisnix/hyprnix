@@ -27,8 +27,8 @@ in {
     ./config/yazi/default.nix
   ];
   home = {
-    username = lib.mkDefault "dwilliams";
-    homeDirectory = lib.mkDefault "/home/dwilliams";
+    username = lib.mkDefault "blis";
+    homeDirectory = lib.mkDefault "/home/blis";
     stateVersion = "25.11";
     sessionVariables = {
       # GTK_THEME = "Adwaita:dark";
@@ -52,8 +52,8 @@ in {
       shellAliases = {
         ll = "eza -la --group-dirs-first --icons";
         v = "nvim";
-        rebuild = "sudo nixos-rebuild switch --flake ~/hyprland-btw/";
-        update = "nix flake update --flake ~/hyprland-btw && sudo nixos-rebuild switch --flake ~/hyprland-btw/";
+        rebuild = "sudo nixos-rebuild switch --flake ~/hyprnix/";
+        update = "nix flake update --flake ~/hyprnix && sudo nixos-rebuild switch --flake ~/hyprnix/";
       };
       # The block below is for commands that should run every time a terminal starts.
       initExtra = ''
