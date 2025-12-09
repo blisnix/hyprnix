@@ -10,7 +10,6 @@
     hyprpicker
     libnotify # send alerts
     xdg-desktop-portal-hyprland
-    nwg-displays
 
     # Hyprland Related
     app2unit # launcher
@@ -52,7 +51,6 @@
     gcc
     git
     gping
-    google-chrome
     htop
     hyfetch
     inxi

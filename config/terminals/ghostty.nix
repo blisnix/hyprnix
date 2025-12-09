@@ -27,7 +27,7 @@
     enableBashIntegration = true;
     clearDefaultKeybinds = true;
     settings = {
-      title = "ddubsOS-GhosTTY";
+      title = "blis-GhosTTY";
       term = "xterm-256color";
       confirm-close-surface = "false";
       font-family = "Maple Mono NF";

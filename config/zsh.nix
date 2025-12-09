@@ -34,6 +34,11 @@
       ];
     };
 
+    shellAliases = {
+      rebuild = "sudo nixos-rebuild switch --flake ~/hyprnix";
+      update = "nix flake update --flake ~/hyprnix && sudo nixos-rebuild switch --flake ~/hyprnix";
+    };
+
     initContent = ''
       # ============================================================================
       # HISTORY OPTIONS (from zshrc-drew)
