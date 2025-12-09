@@ -3,6 +3,7 @@
     ./hardware-configuration.nix
     ./config/fonts.nix
     ./config/packages.nix
+    ./config/gaming.nix
   ];
 
   boot = {

@@ -72,6 +72,7 @@
     starship
     tmux #Terminal mux with hybridd ddubs-tonybtw config
     ugrep
+    vlc
     wget
     zig
   ];
